@@ -1,0 +1,1 @@
+Small CLI that extract a password from KeyChain and put it on the stdout
