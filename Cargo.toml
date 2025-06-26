@@ -1,0 +1,16 @@
+[package]
+name = "key-cli"
+version = "0.1.0"
+edition = "2024"
+
+[lints.rust]
+unsafe_code = "forbid"
+unused = { level = "allow", priority = -1 } # For exploratory dev.
+
+[dependencies]
+# -- Cli
+clap = { version = "4", features = ["derive"] }
+# -- Key
+keyring = { version = "3", features = ["apple-native"] }
+# -- Others
+derive_more = { version = "2", features = ["from", "display"] }
