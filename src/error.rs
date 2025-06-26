@@ -3,13 +3,13 @@ use derive_more::{Display, From};
 pub type Result<T> = core::result::Result<T, Error>;
 
 #[derive(Debug, Display, From)]
-#[display("{self:?}")]
 pub enum Error {
 	#[from(String, &String, &str)]
 	Custom(String),
 
 	// -- Externals
 	#[from]
+	#[display("Keyring Error - {_0}")]
 	Keyring(keyring::Error),
 }
 
