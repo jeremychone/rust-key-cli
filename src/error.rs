@@ -9,7 +9,7 @@ pub enum Error {
 
 	// -- Externals
 	#[from]
-	#[display("Keyring Error - {_0}")]
+	#[display("Keyring Cause: {_0}")]
 	Keyring(keyring::Error),
 }
 
