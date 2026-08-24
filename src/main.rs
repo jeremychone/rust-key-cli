@@ -22,12 +22,15 @@ fn main() {
 }
 
 fn exec_cli(cli: Cli) -> Result<()> {
+	let store = apple_native_keyring_store::keychain::Store::new()?;
+	keyring_core::set_default_store(store);
+
 	match cli.command {
 		Commands::Get {
 			service_account,
 			account_name,
 		} => {
-			let entry = keyring::Entry::new(&service_account, &account_name)?;
+			let entry = keyring_core::Entry::new(&service_account, &account_name)?;
 			let pwd = entry
 				.get_password()
 				.map_err(|_| format!("No matching entry found for {service_account}/{account_name}"))?;
